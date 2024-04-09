@@ -1,4 +1,4 @@
-// yarn build && npx ts-node src/util/buffers/__bench__/bench.decodeUtf8.ts
+// yarn build && npx ts-node src/buffers/__bench__/bench.decodeUtf8.ts
 
 import {runBenchmark} from '../../__bench__/runBenchmark';
 
@@ -12,7 +12,7 @@ const prepare = (str: string) => {
 const runner = (v: number, name: string) => ({
   name: `${name} (v${v})`,
   setup: () => {
-    const decode = require('../../lib/buffers/utf8/decodeUtf8/v' + v).default;
+    const decode = require('../../../lib/buffers/utf8/decodeUtf8/v' + v).default;
     return (data: any) => decode(data, 0, data.length);
   },
 });
