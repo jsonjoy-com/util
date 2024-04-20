@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for strings/utf8.ts</title>
+    <title>Code coverage report for print/printTree.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">strings</a> utf8.ts</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">print</a> printTree.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">92.85% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>17/17</span>
+                <span class='fraction'>13/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">62.5% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>9/9</span>
+                <span class='fraction'>5/8</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>15/15</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -78,72 +78,36 @@
 <a name='L13'></a><a href='#L13'>13</a>
 <a name='L14'></a><a href='#L14'>14</a>
 <a name='L15'></a><a href='#L15'>15</a>
-<a name='L16'></a><a href='#L16'>16</a>
-<a name='L17'></a><a href='#L17'>17</a>
-<a name='L18'></a><a href='#L18'>18</a>
-<a name='L19'></a><a href='#L19'>19</a>
-<a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L16'></a><a href='#L16'>16</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">90x</span>
-<span class="cline-any cline-yes">90x</span>
-<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
- * Given a JavaScript string, computes how many bytes it will take to encode
- * that string in UTF-8.
- *
- * @param str JavaScript string.
- * @returns Length in bytes if encoded as UTF-8.
- */
-export function utf8Size(str: string): number {
-  const length = str.length;
-  let size = 0;
-  let pos = 0;
-  while (pos &lt; length) {
-    let value = str.charCodeAt(pos++);
-    if ((value &amp; 0xffffff80) === 0) {
-      size++;
-      continue;
-    } else if ((value &amp; 0xfffff800) === 0) size += 2;
-    else {
-      if (value &gt;= 0xd800 &amp;&amp; value &lt;= 0xdbff &amp;&amp; pos &lt; length) {
-        const extra = str.charCodeAt(pos);
-        if ((extra &amp; 0xfc00) === 0xdc00) value = (pos++, ((value &amp; 0x3ff) &lt;&lt; 10) + (extra &amp; 0x3ff) + 0x10000);
-      }
-      size += 3 + +((value &amp; 0xffff0000) !== 0);
-    }
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">type Child = (tab: string) =&gt; string;
+&nbsp;
+export const printTree = (tab = <span class="branch-0 cbranch-no" title="branch not covered" >'',</span> children: (Child | null)[]): string =&gt; {
+  children = children.filter(Boolean);
+  let str = '';
+  for (let i = 0; i &lt; children.length; i++) {
+    const isLast = i &gt;= children.length - 1;
+    const fn = children[i];
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (!fn) <span class="cstat-no" title="statement not covered" >continue;</span>
+    const child = fn(tab + `${isLast ? ' ' : '│'}  `);
+    const branch = child ? (isLast ? '└─' : '├─') : <span class="branch-1 cbranch-no" title="branch not covered" >'│ ';</span>
+    str += `\n${tab}${branch} ${child}`;
   }
-  return size;
-}
+  return str;
+};
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
