@@ -56,9 +56,7 @@
   "peerDependencies": {
     "tslib": "2"
   },
-  "dependencies": {
-    "hyperdyperid": "^1.2.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/benchmark": "^2.1.2",
     "@types/jest": "^29.5.12",
