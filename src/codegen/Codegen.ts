@@ -127,6 +127,18 @@ export class Codegen<
     this.js('}');
   }
 
+  public while(condition: string, block: () => void): void {
+    this.js('while (' + condition + ') {');
+    block();
+    this.js('}');
+  }
+
+  public doWhile(block: () => void, condition: string): void {
+    this.js('do {');
+    block();
+    this.js('} while (' + condition + ');');
+  }
+
   public switch(
     expression: string,
     cases: [match: string | number | boolean | null, block: () => void, noBreak?: boolean][],
