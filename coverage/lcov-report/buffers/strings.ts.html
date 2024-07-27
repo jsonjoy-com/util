@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for strings/wordWrap.ts</title>
+    <title>Code coverage report for buffers/strings.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">strings</a> wordWrap.ts</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">buffers</a> strings.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.85% </span>
+                <span class="strong">44.44% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>13/14</span>
+                <span class='fraction'>8/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">62.5% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/8</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/12</span>
+                <span class='fraction'>6/12</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -79,52 +79,37 @@
 <a name='L14'></a><a href='#L14'>14</a>
 <a name='L15'></a><a href='#L15'>15</a>
 <a name='L16'></a><a href='#L16'>16</a>
-<a name='L17'></a><a href='#L17'>17</a>
-<a name='L18'></a><a href='#L18'>18</a>
-<a name='L19'></a><a href='#L19'>19</a>
-<a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L17'></a><a href='#L17'>17</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export interface WrapOptions {
-  width?: number;
-}
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {bufferToUint8Array} from './bufferToUint8Array';
 &nbsp;
-const lineMap = (line: string) =&gt;
-  line.slice(-1) === '\n' ? <span class="branch-0 cbranch-no" title="branch not covered" >line.slice(0, line.length - 1).replace(/[ \t]*$/gm, '') </span>: line;
-const lineReduce = (acc: string[], line: string) =&gt; {
-  acc.push(...line.split('\n'));
-  return acc;
+export const ascii = <span class="fstat-no" title="function not covered" >(t</span>xt: TemplateStringsArray | string | [string]): Uint8Array =&gt; {
+<span class="cstat-no" title="statement not covered" >  <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof txt === 'string') <span class="cstat-no" title="statement not covered" >return ascii([txt]);</span></span>
+<span class="cstat-no" title="statement not covered" >  [txt] = txt;</span>
+  const len = <span class="cstat-no" title="statement not covered" >txt.length;</span>
+  const res = <span class="cstat-no" title="statement not covered" >new Uint8Array(len);</span>
+<span class="cstat-no" title="statement not covered" >  for (let i = <span class="cstat-no" title="statement not covered" >0;</span> i &lt; len; i++) <span class="cstat-no" title="statement not covered" >res[i] = txt.charCodeAt(i);</span></span>
+<span class="cstat-no" title="statement not covered" >  return res;</span>
 };
 &nbsp;
-export const wordWrap = (str: string, options: WrapOptions = {}): string[] =&gt; {
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (!str) <span class="cstat-no" title="statement not covered" >return [];</span>
-&nbsp;
-  const width = options.width || 50;
-  const regexString = '.{1,' + width + '}([\\s\u200B]+|$)|[^\\s\u200B]+?([\\s\u200B]+|$)';
-  const re = new RegExp(regexString, 'g');
-  const lines = (str.match(re) || <span class="branch-1 cbranch-no" title="branch not covered" >[])</span>.map(lineMap).reduce(lineReduce, [] as string[]);
-&nbsp;
-  return lines;
+export const utf8 = (txt: TemplateStringsArray | [string] | string): Uint8Array =&gt; {
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof txt === 'string') <span class="cstat-no" title="statement not covered" >return utf8([txt]);</span>
+  [txt] = txt;
+  return bufferToUint8Array(Buffer.from(txt, 'utf8'));
 };
 &nbsp;</pre></td></tr></table></pre>
 
