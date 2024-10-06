@@ -3,10 +3,9 @@
 // npx ts-node src/json-size/__bench__/json-size.ts
 
 import * as Benchmark from 'benchmark';
-import {utf8Size} from '@jsonjoy.com/util/lib/strings/utf8';
+import {utf8Size} from '../../strings/utf8';
 import {jsonSize, jsonSizeApprox} from '../json';
 import {jsonSizeFast} from '../jsonSizeFast';
-import {msgpackSizeFast} from '../msgpackSizeFast';
 
 const json = [
   {op: 'add', path: '/foo/baz', value: 666},
@@ -61,9 +60,6 @@ suite
   })
   .add(`json-joy/json-size jsonSizeFast()`, () => {
     jsonSizeFast(json);
-  })
-  .add(`json-joy/json-size msgpackSizeFast()`, () => {
-    msgpackSizeFast(json);
   })
   .add(`JSON.stringify`, () => {
     JSON.stringify(json).length;
