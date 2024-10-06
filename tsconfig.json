@@ -45,6 +45,8 @@
       "src/json-brand/index.ts",
       "src/json-equal/index.ts",
       "src/json-random/index.ts",
+      "src/json-clone/index.ts",
+      "src/json-size/index.ts",
       "src/sort/index.ts",
       "src/strings/index.ts"
     ],
