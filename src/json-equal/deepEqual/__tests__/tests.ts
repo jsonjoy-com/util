@@ -1,3 +1,5 @@
+import {b} from "../../../buffers/b";
+
 interface Test {
   description: string;
   value1: unknown;
@@ -246,6 +248,42 @@ export const tests: Suite[] = [
         description: 'pseudo array and equivalent array are not equal',
         value1: {'0': 0, '1': 1, length: 2},
         value2: [0, 1],
+        equal: false,
+      },
+    ],
+  },
+
+  {
+    description: 'binary',
+    tests: [
+      {
+        description: 'two empty blobs',
+        value1: new Uint8Array(0),
+        value2: new Uint8Array(0),
+        equal: true,
+      },
+      {
+        description: 'two single char blobs',
+        value1: b(0),
+        value2: b(0),
+        equal: true,
+      },
+      {
+        description: 'small blobs',
+        value1: b(1, 2, 3),
+        value2: b(1, 2, 3),
+        equal: true,
+      },
+      {
+        description: 'empty blob not equal to empty array',
+        value1: b(),
+        value2: [],
+        equal: false,
+      },
+      {
+        description: 'empty blob not equal to non-empty blob',
+        value1: b(),
+        value2: b(1),
         equal: false,
       },
     ],
