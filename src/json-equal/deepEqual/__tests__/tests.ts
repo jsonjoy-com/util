@@ -1,4 +1,4 @@
-import {b} from "../../../buffers/b";
+import {b} from '../../../buffers/b';
 
 interface Test {
   description: string;

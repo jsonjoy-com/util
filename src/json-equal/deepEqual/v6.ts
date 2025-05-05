@@ -5,7 +5,8 @@ export const deepEqual = (a: unknown, b: unknown): boolean => {
   // Primitives
   if (a === b) return true;
 
-  let length: number = 0, i: number = 0;
+  let length: number = 0,
+    i: number = 0;
 
   // Arrays
   if (isArray(a)) {
