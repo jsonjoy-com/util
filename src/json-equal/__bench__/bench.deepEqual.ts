@@ -9,7 +9,7 @@ import {deepEqual as deepEqualV3} from '../deepEqual/v3';
 import {deepEqual as deepEqualV4} from '../deepEqual/v4';
 import {deepEqual as deepEqualV5} from '../deepEqual/v5';
 import {deepEqual as deepEqualV6} from '../deepEqual/v6';
-import {$$deepEqual} from '../$$deepEqual';
+import {deepEqualCodegen} from '../deepEqualCodegen';
 
 const json1 = {
   foo: 'bar',
@@ -23,7 +23,7 @@ const json2 = {
 };
 
 // tslint:disable-next-line no-eval eval ban
-const equalGenerated1 = eval($$deepEqual(json1));
+const equalGenerated1 = eval(deepEqualCodegen(json1));
 
 const suite = new Benchmark.Suite();
 
@@ -51,7 +51,7 @@ suite
   })
   .add(`json-joy/json-equal/$$deepEqual (with codegen)`, () => {
     // tslint:disable-next-line no-eval eval ban
-    const equalGenerated1 = eval($$deepEqual(json1));
+    const equalGenerated1 = eval(deepEqualCodegen(json1));
     equalGenerated1(json2);
   })
   .on('cycle', (event: any) => {
