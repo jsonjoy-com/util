@@ -28,6 +28,16 @@ const codegenValue = (doc: unknown, code: string[], r: number): number => {
     return rr;
   }
 
+  // Uint8Array
+  if (doc instanceof Uint8Array) {
+    const length = doc.length;
+    code.push(`if(!(r${r} instanceof Uint8Array) || r${r}.length !== ${length})return false;`);
+    let condition = '';
+    for (let i = 0; i < length; i++) condition += (condition ? '||' : '') + `(r${r}[${i}]!==${doc[i]})`;
+    if (condition) code.push(`if(${condition})return false;`);
+    return rr;
+  }
+
   // Objects
   if (type === 'object' && doc) {
     const obj = doc as Record<string, unknown>;
@@ -40,6 +50,7 @@ const codegenValue = (doc: unknown, code: string[], r: number): number => {
       code.push(`var r${rr}=r${r}[${JSON.stringify(key)}];`);
       rr = codegenValue(obj[key], code, rr);
     }
+    return rr;
   }
 
   // Undefined
@@ -51,7 +62,7 @@ const codegenValue = (doc: unknown, code: string[], r: number): number => {
   return rr;
 };
 
-export const $$deepEqual = (a: unknown): JavaScript<(b: unknown) => boolean> => {
+export const deepEqualCodegen = (a: unknown): JavaScript<(b: unknown) => boolean> => {
   const code: string[] = [];
   codegenValue(a, code, 0);
 
