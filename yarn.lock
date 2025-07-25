@@ -2464,6 +2464,11 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
+tree-dump@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/tree-dump/-/tree-dump-1.0.3.tgz"
+  integrity sha512-il+Cv80yVHFBwokQSfd4bldvr1Md951DpgAGfmhydt04L+YzHgubm2tQ7zueWDcGENKHq0ZvGFR/hjvNXilHEg==
+
 ts-jest@^29.1.2:
   version "29.1.2"
   resolved "https://registry.npmjs.org/ts-jest/-/ts-jest-29.1.2.tgz"
