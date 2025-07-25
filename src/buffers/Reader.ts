@@ -12,12 +12,14 @@ export class Reader implements IReader, IReaderResettable {
     this.view = new DataView(uint8.buffer, uint8.byteOffset, uint8.length);
   }
 
+  /**
+   * Get current byte value without advancing the cursor.
+   */
   public peek(): number {
     return this.view.getUint8(this.x);
   }
 
   /** 
-   * Get current byte value without advancing the cursor.
    * @deprecated Use peek() instead.
    */
   public peak(): number {

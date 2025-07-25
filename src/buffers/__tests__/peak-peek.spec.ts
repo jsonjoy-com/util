@@ -7,7 +7,6 @@ describe('peak() and peek() methods', () => {
     test('peak() returns current byte without advancing cursor', () => {
       const reader = new Reader();
       reader.reset(new Uint8Array([1, 2, 3, 4, 5]));
-      
       expect(reader.x).toBe(0);
       expect(reader.peak()).toBe(1);
       expect(reader.x).toBe(0); // cursor should not advance
