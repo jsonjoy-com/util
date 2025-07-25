@@ -71,6 +71,12 @@ export interface IWriterGrowable {
 
 export interface IReaderBase {
   /** Get current byte value without advancing the cursor. */
+  peek(): number;
+
+  /**
+   * Get current byte value without advancing the cursor.
+   * @deprecated Use peek() instead.
+   */
   peak(): number;
 
   /** Advance the cursor given number of octets. */

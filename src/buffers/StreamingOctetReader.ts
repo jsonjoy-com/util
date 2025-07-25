@@ -129,9 +129,17 @@ export class StreamingOctetReader {
     this.skipUnsafe(n);
   }
 
-  public peak(): number {
+  public peek(): number {
     this.assertSize(1);
     return this.chunks[0]![this.x];
+  }
+
+  /**
+   * Get current byte value without advancing the cursor.
+   * @deprecated Use peek() instead.
+   */
+  public peak(): number {
+    return this.peek();
   }
 
   public utf8(length: number, mask: [number, number, number, number], maskIndex: number): string {
