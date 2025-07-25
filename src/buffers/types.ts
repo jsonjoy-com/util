@@ -73,7 +73,7 @@ export interface IReaderBase {
   /** Get current byte value without advancing the cursor. */
   peek(): number;
 
-  /** 
+  /**
    * Get current byte value without advancing the cursor.
    * @deprecated Use peek() instead.
    */

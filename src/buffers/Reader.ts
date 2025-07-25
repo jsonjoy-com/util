@@ -19,7 +19,7 @@ export class Reader implements IReader, IReaderResettable {
     return this.view.getUint8(this.x);
   }
 
-  /** 
+  /**
    * @deprecated Use peek() instead.
    */
   public peak(): number {

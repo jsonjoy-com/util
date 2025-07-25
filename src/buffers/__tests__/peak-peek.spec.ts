@@ -10,7 +10,7 @@ describe('peak() and peek() methods', () => {
       expect(reader.x).toBe(0);
       expect(reader.peak()).toBe(1);
       expect(reader.x).toBe(0); // cursor should not advance
-      
+
       reader.u8(); // advance cursor
       expect(reader.x).toBe(1);
       expect(reader.peak()).toBe(2);
@@ -20,11 +20,11 @@ describe('peak() and peek() methods', () => {
     test('peek() returns current byte without advancing cursor', () => {
       const reader = new Reader();
       reader.reset(new Uint8Array([1, 2, 3, 4, 5]));
-      
+
       expect(reader.x).toBe(0);
       expect(reader.peek()).toBe(1);
       expect(reader.x).toBe(0); // cursor should not advance
-      
+
       reader.u8(); // advance cursor
       expect(reader.x).toBe(1);
       expect(reader.peek()).toBe(2);
@@ -34,11 +34,11 @@ describe('peak() and peek() methods', () => {
     test('peak() and peek() return the same value', () => {
       const reader = new Reader();
       reader.reset(new Uint8Array([42, 100, 255]));
-      
+
       expect(reader.peak()).toBe(reader.peek());
       reader.u8(); // advance cursor
       expect(reader.peak()).toBe(reader.peek());
-      reader.u8(); // advance cursor  
+      reader.u8(); // advance cursor
       expect(reader.peak()).toBe(reader.peek());
     });
   });
@@ -47,11 +47,11 @@ describe('peak() and peek() methods', () => {
     test('peak() returns current byte without advancing cursor', () => {
       const reader = new StreamingReader();
       reader.push(new Uint8Array([10, 20, 30]));
-      
+
       expect(reader.x).toBe(0);
       expect(reader.peak()).toBe(10);
       expect(reader.x).toBe(0); // cursor should not advance
-      
+
       reader.u8(); // advance cursor
       expect(reader.x).toBe(1);
       expect(reader.peak()).toBe(20);
@@ -61,11 +61,11 @@ describe('peak() and peek() methods', () => {
     test('peek() returns current byte without advancing cursor', () => {
       const reader = new StreamingReader();
       reader.push(new Uint8Array([10, 20, 30]));
-      
+
       expect(reader.x).toBe(0);
       expect(reader.peek()).toBe(10);
       expect(reader.x).toBe(0); // cursor should not advance
-      
+
       reader.u8(); // advance cursor
       expect(reader.x).toBe(1);
       expect(reader.peek()).toBe(20);
@@ -75,11 +75,11 @@ describe('peak() and peek() methods', () => {
     test('peak() and peek() return the same value', () => {
       const reader = new StreamingReader();
       reader.push(new Uint8Array([42, 100, 255]));
-      
+
       expect(reader.peak()).toBe(reader.peek());
       reader.u8(); // advance cursor
       expect(reader.peak()).toBe(reader.peek());
-      reader.u8(); // advance cursor  
+      reader.u8(); // advance cursor
       expect(reader.peak()).toBe(reader.peek());
     });
   });
@@ -88,9 +88,9 @@ describe('peak() and peek() methods', () => {
     test('peak() returns current byte without advancing cursor', () => {
       const reader = new StreamingOctetReader();
       reader.push(new Uint8Array([100, 200, 150]));
-      
+
       expect(reader.peak()).toBe(100);
-      
+
       reader.u8(); // advance cursor internally
       expect(reader.peak()).toBe(200);
     });
@@ -98,9 +98,9 @@ describe('peak() and peek() methods', () => {
     test('peek() returns current byte without advancing cursor', () => {
       const reader = new StreamingOctetReader();
       reader.push(new Uint8Array([100, 200, 150]));
-      
+
       expect(reader.peek()).toBe(100);
-      
+
       reader.u8(); // advance cursor internally
       expect(reader.peek()).toBe(200);
     });
@@ -108,11 +108,11 @@ describe('peak() and peek() methods', () => {
     test('peak() and peek() return the same value', () => {
       const reader = new StreamingOctetReader();
       reader.push(new Uint8Array([42, 100, 255]));
-      
+
       expect(reader.peak()).toBe(reader.peek());
       reader.u8(); // advance cursor
       expect(reader.peak()).toBe(reader.peek());
-      reader.u8(); // advance cursor  
+      reader.u8(); // advance cursor
       expect(reader.peak()).toBe(reader.peek());
     });
   });

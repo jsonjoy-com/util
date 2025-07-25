@@ -73,7 +73,7 @@ export class StreamingReader implements IReader, IReaderResettable {
     return this.view.getUint8(this.x);
   }
 
-  /** 
+  /**
    * Get current byte value without advancing the cursor.
    * @deprecated Use peek() instead.
    */

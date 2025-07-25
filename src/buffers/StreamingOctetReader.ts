@@ -134,7 +134,7 @@ export class StreamingOctetReader {
     return this.chunks[0]![this.x];
   }
 
-  /** 
+  /**
    * Get current byte value without advancing the cursor.
    * @deprecated Use peek() instead.
    */
