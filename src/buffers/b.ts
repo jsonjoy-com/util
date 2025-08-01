@@ -1,1 +1,1 @@
-export const b = (...args: number[]) => new Uint8Array(args);
+export * from '@jsonjoy.com/buffers/lib/b';
