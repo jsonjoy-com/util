@@ -1,8 +1,4 @@
-/**
- * Validates that the given data is valid UTF-8 text.
- * @param buf Data to check.
- * @returns True if the data is valid UTF-8.
- */
+export * from '@jsonjoy.com/buffers/lib/utf8/isUtf8';
 export const isUtf8 = (buf: Uint8Array, from: number, length: number): boolean => {
   const to = from + length;
   while (from < to) {

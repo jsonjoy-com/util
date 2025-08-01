@@ -1,3 +1,1 @@
-import {CachedUtf8Decoder} from './CachedUtf8Decoder';
-
-export default new CachedUtf8Decoder();
+export * from '@jsonjoy.com/buffers/lib/utf8/sharedCachedUtf8Decoder';
