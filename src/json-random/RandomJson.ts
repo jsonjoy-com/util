@@ -1,4 +1,4 @@
-import {randomString, Token} from "./string";
+import {randomString, Token} from './string';
 
 type JsonValue = unknown;
 
@@ -241,13 +241,13 @@ export class RandomJson {
       this.opts.nodeCount = 0;
     } else {
       this.root =
-      this.opts.rootNode === 'object'
-      ? {}
-      : this.opts.rootNode === 'array'
-      ? []
-      : this.pickContainerType() === 'object'
-      ? {}
-      : [];
+        this.opts.rootNode === 'object'
+          ? {}
+          : this.opts.rootNode === 'array'
+            ? []
+            : this.pickContainerType() === 'object'
+              ? {}
+              : [];
       this.containers.push(this.root as ContainerNode);
     }
   }
