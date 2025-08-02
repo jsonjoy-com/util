@@ -1,13 +1,18 @@
 /**
  * Tokens used to specify random string generation options
  */
-export type Token = TokenPick | TokenRepeat | TokenRange | TokenList;
+export type Token = TokenLiteral | TokenPick | TokenRepeat | TokenRange | TokenList;
+
+/**
+ * A string literal to use as-is.
+ */
+export type TokenLiteral = string;
 
 /**
  * Picks a random string from the provided array of strings.
- * The `what` array can contain any number of strings.
+ * The `from` array can contain any number of strings.
  */
-export type TokenPick = [type: 'pick', what: string[]];
+export type TokenPick = [type: 'pick', from: string[]];
 
 /**
  * Repeats `pattern` a random number of times between `min` and `max`.
@@ -30,6 +35,7 @@ export type TokenList = [type: 'list', what: Token[]];
  * @returns A randomly generated string.
  */
 export function randomString(token: Token): string {
+  if (typeof token === 'string') return token;
   const rnd = Math.random();
   switch (token[0]) {
     case 'pick': {
