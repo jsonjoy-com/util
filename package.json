@@ -58,7 +58,8 @@
     "tslib": "2"
   },
   "dependencies": {
-    "@jsonjoy.com/buffers": "^1.0.0"
+    "@jsonjoy.com/buffers": "^1.0.0",
+    "@jsonjoy.com/codegen": "^1.0.0"
   },
   "devDependencies": {
     "@types/benchmark": "^2.1.2",

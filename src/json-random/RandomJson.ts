@@ -1,3 +1,5 @@
+import {randomString, Token} from './string';
+
 type JsonValue = unknown;
 
 /** @ignore */
@@ -14,9 +16,10 @@ export interface NodeOdds {
 }
 
 export interface RandomJsonOptions {
-  rootNode: 'object' | 'array' | undefined;
+  rootNode: 'object' | 'array' | 'string' | undefined;
   nodeCount: number;
   odds: NodeOdds;
+  strings?: Token;
 }
 
 const defaultOpts: RandomJsonOptions = {
@@ -233,15 +236,20 @@ export class RandomJson {
       this.opts.odds.binary +
       this.opts.odds.array +
       this.opts.odds.object;
-    this.root =
-      this.opts.rootNode === 'object'
-        ? {}
-        : this.opts.rootNode === 'array'
-          ? []
-          : this.pickContainerType() === 'object'
-            ? {}
-            : [];
-    this.containers.push(this.root as ContainerNode);
+    if (this.opts.rootNode === 'string') {
+      this.root = this.generateString();
+      this.opts.nodeCount = 0;
+    } else {
+      this.root =
+        this.opts.rootNode === 'object'
+          ? {}
+          : this.opts.rootNode === 'array'
+            ? []
+            : this.pickContainerType() === 'object'
+              ? {}
+              : [];
+      this.containers.push(this.root as ContainerNode);
+    }
   }
 
   /**
@@ -281,7 +289,7 @@ export class RandomJson {
       case 'number':
         return RandomJson.genNumber();
       case 'string':
-        return RandomJson.genString();
+        return this.generateString();
       case 'binary':
         return RandomJson.genBinary();
       case 'array':
@@ -289,6 +297,11 @@ export class RandomJson {
       case 'object':
         return {};
     }
+  }
+
+  protected generateString(): string {
+    const strings = this.opts.strings;
+    return strings ? randomString(strings) : RandomJson.genString();
   }
 
   /** @ignore */

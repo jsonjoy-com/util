@@ -120,3 +120,17 @@ test('random strings can be converted to UTF-8', () => {
     expect(test).toBe(str);
   }
 });
+
+test('can specify string generation schema', () => {
+  const str = RandomJson.generate({
+    rootNode: 'string',
+    strings: [
+      'list',
+      [
+        ['repeat', 2, 2, 'xx'],
+        ['pick', ['y']],
+      ],
+    ],
+  });
+  expect(str).toBe('xxxxy');
+});
